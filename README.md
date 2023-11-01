@@ -8,3 +8,6 @@ List of collaborators
 4. Maurizio - Need to Make account
 5.  Max - Need to make account
 6.  Marcos - Need to choose account
+
+
+Currently we are starting the process of updating the code, but the plan is to finish this side project before the end of the next build season
