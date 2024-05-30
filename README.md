@@ -6,7 +6,7 @@ List of collaborators
 2. TheAnimaniac23 - Liam Stanley
 3. Noah - Need to make account
 4. Maurizio - Need to Make account
-5.  Max - Need to make account
+5. Jojo-Ze-Rabbit-42 - Max Arnold
 6.  Marcos - Need to choose account
 
 
