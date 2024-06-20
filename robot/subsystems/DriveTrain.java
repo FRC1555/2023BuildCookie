@@ -1,52 +1,52 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.motorcontrol.Victor;
 /**
  *
  */
-public class DriveTrain extends Subsystem {
+public class DriveTrain extends SubsystemBase {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
     //Declaring motors
-    public static Victor L = Robot.map.leftDrive;
-    public static Victor R = Robot.map.rightDrive;
+    private static Victor leftMotors;
+    private static Victor rightMotors; 
     
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    public DriveTrain() {
+        leftMotors = new Victor(0);
+        rightMotors = new Victor(1);
     }
     
     //Stops the drive train
     public void stop() {
-    	Robot.map.leftDrive.set(0);
-        Robot.map.rightDrive.set(0);
+    	leftMotors.set(0);
+        rightMotors.set(0);
         SmartDashboard.putNumber("Left Drive speed: ", 0);
-        SmartDashboard.putNumber("Right Drive speed: ", 0);    }
+        SmartDashboard.putNumber("Right Drive speed: ", 0);    
+    }
     
     //Drives the robot with two separate powers for the wheels
     public void driveTank(double Lspeed, double Rspeed) {
-    	Robot.map.leftDrive.set(Lspeed);
-        Robot.map.rightDrive.set(-Rspeed);
+    	leftMotors.set(-Lspeed * 0.3);
+        rightMotors.set(Rspeed * 0.3);
         SmartDashboard.putNumber("Left Drive speed: ", Lspeed);
         SmartDashboard.putNumber("Right Drive speed: ", Rspeed);
     }
 
     //Drives the robot as if the front were the back
     public void driveTankInverted(double Lspeed, double Rspeed) {
-    	Robot.map.leftDrive.set(-Rspeed);
-    	Robot.map.rightDrive.set(Lspeed);
+    	leftMotors.set(-Rspeed * 0.3);
+    	rightMotors.set(Lspeed * 0.3);
     }
     
     //Drives straight
     public void driveStraight(double speed) {
-    	Robot.map.leftDrive.set(-speed);
-    	Robot.map.rightDrive.set(speed);
+    	leftMotors.set(-speed * 0.3);
+    	rightMotors.set(speed * 0.3);
     }
     
     //Function pending
@@ -65,26 +65,6 @@ public class DriveTrain extends Subsystem {
     	stop();
     }
 
-    public void driveAtAngle(double speed, double angle) {
-        double error = Robot.kNavX.getYaw() - angle;
-        double steeringConstant = 0.1;
-        double maxSteeringAdjust = 0.3;
-        if (error > 180) {
-            error =- 360;
-        }
-        if (error < -180) {
-            error =+ 360;
-        }
 
-        double steeringAdjust = error*steeringConstant;
-        if (steeringAdjust > maxSteeringAdjust) {
-            steeringAdjust = maxSteeringAdjust;
-        }
-        if (steeringAdjust < -maxSteeringAdjust) {
-            steeringAdjust = -maxSteeringAdjust;
-        }
-
-        driveTank((speed - steeringAdjust), (speed + steeringAdjust));
-    }
 }
 
