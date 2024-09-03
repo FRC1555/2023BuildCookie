@@ -1,4 +1,4 @@
-# 2023BuildCookie
+# Cookie2024
 This is a repository for the new updated code for Cookie, this is going to be a collaborative effort between all programming students, so the format might look different between files
 
 List of collaborators
@@ -10,4 +10,6 @@ List of collaborators
 6.  Marcos - Need to choose account
 
 
-Currently we are starting the process of updating the code, but the plan is to finish this side project before the end of the next build season
+Edit: This code is fully functional, and all works... to my knowledge. Marcos has done most of the work, and I did the finishing touches.
+
+Signed, Jojo-Ze-Rabbit-42, AKA Maxx the Kraken
